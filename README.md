@@ -1,20 +1,5 @@
+OutlookMail
 =========
-Outlook Mail
-=========
-
-
-.. image:: https://img.shields.io/pypi/v/outlookmail.svg
-        :target: https://pypi.python.org/pypi/outlookmail
-
-.. image:: https://img.shields.io/travis/luisggc/outlookmail.svg
-        :target: https://travis-ci.org/luisggc/outlookmail
-
-.. image:: https://readthedocs.org/projects/outlookmail/badge/?version=latest
-        :target: https://outlookmail.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
-
-
 
 Send Emails via Outlook using Python.
 Usage examples in `ReadTheDocs Usage`_.
@@ -66,19 +51,16 @@ This is the preferred method to install outlookmail, as it will always install t
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
 
-.. _pip: https://pip.pypa.io
-.. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
-
+- Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
+- pip: https://pip.pypa.io
 
 
 Credits
 -------
 
-Most of vectorized calculus made with Numpy_, unit conversion with Pint_, all plots with Matplotlib_ (export to dxf with ezdxf_), detect peaks with py-findpeaks_, 
-docs made with the help of Sphinx_ and Numpydoc_, analysis table with Pandas_,  
-this package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-.. _Pandas: https://github.com/pandas-dev/pandas
-.. _`ReadTheDocs Usage`: https://outlookmail.readthedocs.io/en/latest/usage.html
+This package was created using:
+- Cookiecutter: https://github.com/audreyr/cookiecutter
+- audreyr/cookiecutter-pypackage: https://github.com/audreyr/cookiecutter-pypackage
+- Pandas: https://github.com/pandas-dev/pandas
+- Validate Email: https://github.com/syrusakbary/validate_email
+- ReadTheDocs Usage: https://outlookmail.readthedocs.io/en/latest/usage.html
