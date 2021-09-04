@@ -1,4 +1,5 @@
 """Main module."""
+
 import pandas as pd
 import math
 import re
@@ -7,30 +8,19 @@ import win32com.client as win32
 outlook = win32.Dispatch('outlook.application')
 
 class Mail:
-    def __init__(self,
-                email_template_path,
-                to=0,
-                cc=0,
-                bcc=0,
-                limit_contacts_by_email=290,
-                limit_contacts_type="bcc",
-                send_on_behalf=0,
-                mail_properties={},
-                send=False,
-                **options
-        ):
+    def __init__(self, email_template_path, to=0, cc=0, bcc=0, limit_contacts_by_email=290, limit_contacts_type="bcc", send_on_behalf=0, mail_properties={}, send=False):
         """
             Returns a Mail object.
             
                 Call signatures:
                     om.Mail(email_template_path, to=0, cc=0, bcc=0, limit_contacts_by_email=290, limit_contacts_type="bcc", send_on_behalf=0, mail_properties={}, send=False, **options)
                 
-                >>> email = om.Mail(r"C:\Users\luisc\OneDrive\Projetos\outlookmail\Jupyter\Emails\Arquivo do Email.msg",
+                >>> email = om.Mail(
+                >>>     email_template_path= r"path_to_template_file.msg",
                 >>>     to= "johndoe@hotmail.com; another_email@email.com",
                 >>>     cc=["johndoe2@hotmail.com; another_email2@email.com"],
                 >>>     bcc= r"path_to_excel_with_emails.xlsx"
                 >>> )
-
                 >>> email.display()
                 >>> email.send()
             
