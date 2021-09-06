@@ -4,5 +4,5 @@ __author__ = """Luis Gabriel Gonçalves Coimbra"""
 __email__ = 'luiscoimbraeng@outlook.com'
 __version__ = '0.0.1'
 
-
-#from . import *
+from .Mail import Mail
+from .API import API

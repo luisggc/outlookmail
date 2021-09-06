@@ -8,7 +8,7 @@ import win32com.client as win32
 outlook = win32.Dispatch('outlook.application')
 
 class Mail:
-    def __init__(self, email_template_path, to=0, cc=0, bcc=0, limit_contacts_by_email=290, limit_contacts_type="bcc", send_on_behalf=0, mail_properties={}, send=False):
+    def __init__(self, email_template_path, to=0, cc=0, bcc=0, limit_contacts_by_email=290, limit_contacts_type="bcc", send_on_behalf=0, mail_properties={}, send=False, **kargs):
         """
             Returns a Mail object.
             
@@ -82,9 +82,10 @@ class Mail:
         self.bcc_input = bcc
 
         self.email_template_path = email_template_path
-        self.limit_contacts_by_email = limit_contacts_by_email
+        self.limit_contacts_by_email = int(limit_contacts_by_email)
         self.send_on_behalf = send_on_behalf
         self.mail_properties = mail_properties
+        self.limit_contacts_type = limit_contacts_type
         
         self.to_list = self.contacts_to_list(to)
         self.cc_list = self.contacts_to_list(cc)
@@ -94,9 +95,9 @@ class Mail:
 
         contacts_limited = getattr(self, limit_contacts_type+"_list")
         self.packs = []
-        if len(contacts_limited)>limit_contacts_by_email:
-            n_emails_will_be_sent = math.ceil(len(contacts_limited)/limit_contacts_by_email)
-            self.packs = [ "; ".join(contacts_limited[i*limit_contacts_by_email:(i+1)*limit_contacts_by_email]) for i in range(0,n_emails_will_be_sent) ]
+        if len(contacts_limited)>self.limit_contacts_by_email:
+            n_emails_will_be_sent = math.ceil(len(contacts_limited)/self.limit_contacts_by_email)
+            self.packs = [ "; ".join(contacts_limited[i*self.limit_contacts_by_email:(i+1)*self.limit_contacts_by_email]) for i in range(0,n_emails_will_be_sent) ]
 
         if send:
             self.send()
@@ -131,7 +132,7 @@ class Mail:
     def send_pack(self):
         for pack in self.packs:
             mail = self.create_mail_instance()
-            setattr(mail, self.limit_contacts_type+"_list", pack)
+            setattr(mail, self.limit_contacts_type, pack)
             mail.Send()
 
 
@@ -166,6 +167,3 @@ class Mail:
         emails = re.findall(r'[\w\.\+\-]+\@[\w]+\.[a-z]{2,3}', emails)
         emails = [ email for email in emails if validate_email(email)]
         return emails
-
-    
-

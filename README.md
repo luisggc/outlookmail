@@ -17,7 +17,7 @@ Outlookmail is a python package to send emails in Windows using Outlook::
        email = om.Mail(
             email_template_path= r"path_to_template_file.msg",
             to= "johndoe@hotmail.com; another_email@email.com",
-            cc=["johndoe2@hotmail.com; another_email2@email.com"],
+            cc=["johndoe2@hotmail.com", "another_email2@email.com"],
             bcc= r"path_to_excel_with_emails.xlsx"
         )
         email.display()

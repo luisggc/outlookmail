@@ -18,7 +18,7 @@ requirements = ['Click>=7.0',
 test_requirements = [ ]
 
 setup(
-    author="Luis Gabriel GonÃ§alves Coimbra",
+    author="Luis Gabriel Gonçalves Coimbra",
     author_email='luiscoimbraeng@outlook.com',
     python_requires='>=3.6',
     classifiers=[
@@ -46,7 +46,7 @@ setup(
     packages=find_packages(include=['outlookmail', 'outlookmail.*']),
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/luiggc[D[D[Dsggc/outlookmail',
+    url='https://github.com/luisggc/outlookmail',
     version='0.0.1',
     zip_safe=False,
 )
