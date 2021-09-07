@@ -90,7 +90,7 @@ class Mail:
         self.replace_on_body = replace_on_body
 
         if not os.path.exists(email_template_path):
-            raise ValueError("File wa snot found: {}".format(email_template_path))
+            raise ValueError("File was not found: {}".format(email_template_path))
 
         self.to_list = self.contacts_to_list(to)
         self.cc_list = self.contacts_to_list(cc)

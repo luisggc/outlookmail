@@ -6,7 +6,7 @@ import io
 
 class API:
     @staticmethod
-    def read_from_txt(file_path, delete_after_sent=False):
+    def read_from_txt(file_path, delete_after_sent=False, success_message=False):
         #file_data = open(file_path,'r')
         file_data = io.open(file_path, mode="r", encoding="utf-8")
         txt = file_data.read()
@@ -21,6 +21,8 @@ class API:
         mail = Mail(**args)
         try:
             mail.send()
+            if success_message:
+                print("\nEmail was sent. Please check your 'sent' folder in Outlook.\n")
         except Exception as e:
             raise ValueError("Outlook not available. Error: {}".format(e))
             if delete_after_sent:
