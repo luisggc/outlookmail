@@ -12,7 +12,8 @@ with open('HISTORY.rst') as history_file:
 
 requirements = ['Click>=7.0',
 'validate_email==1.3',
-'pandas==1.3.2'
+'pandas==1.3.2',
+'pywin32==301'
 ]
 
 test_requirements = [ ]
