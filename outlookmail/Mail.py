@@ -6,9 +6,10 @@ import re
 from validate_email import validate_email
 import win32com.client as win32
 outlook = win32.Dispatch('outlook.application')
+import os
 
 class Mail:
-    def __init__(self, email_template_path, to=0, cc=0, bcc=0, limit_contacts_by_email=290, limit_contacts_type="bcc", send_on_behalf=0, mail_properties={}, send=False, **kargs):
+    def __init__(self, email_template_path, to=0, cc=0, bcc=0, limit_contacts_by_email=290, limit_contacts_type="bcc", send_on_behalf=0, mail_properties={}, replace_on_body={}, send=False, **kargs):
         """
             Returns a Mail object.
             
@@ -86,7 +87,11 @@ class Mail:
         self.send_on_behalf = send_on_behalf
         self.mail_properties = mail_properties
         self.limit_contacts_type = limit_contacts_type
-        
+        self.replace_on_body = replace_on_body
+
+        if not os.path.exists(email_template_path):
+            raise ValueError("File wa snot found: {}".format(email_template_path))
+
         self.to_list = self.contacts_to_list(to)
         self.cc_list = self.contacts_to_list(cc)
         self.bcc_list = self.contacts_to_list(bcc)
@@ -108,7 +113,10 @@ class Mail:
 
     def create_mail_instance(self):
         mail = outlook.CreateItemFromTemplate(self.email_template_path)
-        mail.HTMLBody = mail.HTMLBody
+        body = mail.HTMLBody
+        for old_value, new_value in self.replace_on_body.items():
+            body = body.replace(old_value, new_value)
+        mail.HTMLBody = body
         mail.to = self.to if self.to_input != 0 else mail.to
         mail.cc = self.cc if self.cc_input != 0 else mail.cc
         mail.bcc = self.bcc if self.bcc_input != 0 else mail.bcc
