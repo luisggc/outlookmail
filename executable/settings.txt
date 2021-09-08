@@ -1,0 +1,4 @@
+email_template_path = Files\Template.msg
+to = asasdsad@asfsdf.com; another_email@email.com - athird-email@outook.com
+cc = copied-email@outlook.com
+bcc = bcc_email@outlook.com
