@@ -1,4 +1,0 @@
-email_template_path = C:\Users\luisc\OneDrive\Área de Trabalho\Outlookmail example\Files\Template.msg
-to = asasdsad@asfsdf.com;asd asdsadsad adasdas <ola> sadsadasda emailcerto@xxx.com <>asdnasobdoiaso,
-cc = luiscoimbraeng@outlook.com
-bcc = luiscoimbraeng@outlook.com
