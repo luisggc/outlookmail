@@ -6,10 +6,10 @@ import io
 
 class API:
     @staticmethod
-    def read_from_txt(file_path, delete_after_sent=False, success_message=False):
+    def read_from_txt(file_path, success_message=False, do_on_send_success=lambda x:x, do_on_send_failure=lambda x:x):
         #file_data = open(file_path,'r')
-        file_data = io.open(file_path, mode="r", encoding="utf-8")
-        txt = file_data.read()
+        with io.open(file_path, mode="r", encoding="utf-8") as file_data:
+            txt = file_data.read()
         args = { row.split("=")[0].strip(): "=".join(row.split("=")[1:]).strip() for row in txt.split("\n") }
         args.pop("", None)
         if args.get("when"):
@@ -23,8 +23,10 @@ class API:
             mail.send()
             if success_message:
                 print("\nEmail was sent. Please check your 'sent' folder in Outlook.\n")
+            if do_on_send_success:
+                do_on_send_success()
         except Exception as e:
             raise ValueError("Outlook not available. Error: {}".format(e))
-            if delete_after_sent:
-                os.remove(file_path)
+            if do_on_send_failure:
+                do_on_send_failure()
 
